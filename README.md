@@ -32,25 +32,45 @@ Welcome to E-Shop! This project is a lightweight, fully functional shopping cart
 ## Project Structure
 
 shopping-cart-app/
+
 ├── backend/                # Node.js Express server
+
 │   ├── data/               # Mock data for products
+
 │   │   └── products.js
+
 │   ├── node_modules/
+
 │   ├── server.js           # Express server setup and API routes
+
 │   ├── package-lock.json
+
 │   └── package.json
+
 ├── frontend/               # React.js application
+
 │   ├── public/             # Static assets for React app
+
 │   ├── src/                # React source code
+
 │   │   ├── components/     # Reusable React components
+
 │   │   ├── contexts/       # React Context for global state management
+
 │   │   ├── App.css         # Main CSS styles
+
 │   │   ├── App.js          # Main application component with routing
+
 │   │   ├── index.css       # Global base styles
+
 │   │   └── index.js        # Entry point for React app
+
 │   ├── node_modules/
+
 │   ├── package-lock.json
+
 │   └── package.json
+
 └── README.md               # This file
 
 
@@ -70,7 +90,9 @@ Follow these steps to get the application up and running on your local machine:
 If this project is in a Git repository, clone it:
 ```bash
 git clone <repository-url>
+
 cd shopping-cart-app
+
 If you have the files directly, ensure they are organized as per the Project Structure outlined above in a root folder named shopping-cart-app.
 
 2. Set Up and Start the Backend Server:
@@ -82,6 +104,7 @@ c.  Install the necessary Node.js dependencies:
 bash npm install
 d.  Once the dependencies are installed, start the backend server:
 bash node server.js
+
 You should see a confirmation message in the terminal:
 Backend server running on http://localhost:3001
 
@@ -90,17 +113,22 @@ Keep this terminal window open and running for the backend server to remain acti
 3. Set Up and Start the Frontend Application:
 
 a.  Open a new terminal window or command prompt tab (leave the backend server running in its own terminal).
+
 b.  Navigate to the frontend directory:
 bash cd shopping-cart-app/frontend
+
 c.  Install the necessary React dependencies:
 bash npm install
+
 d.  Once the dependencies are installed, start the React development server:
 bash npm start
+
 This command will typically open the E-Shop application automatically in your default web browser at http://localhost:3000. If it doesn't open automatically, you can manually navigate to this URL in your browser.
 
 Congratulations! The E-Shop application should now be running locally. You can browse products, add them to your cart, proceed to checkout, and see your wallet balance update.
 
 How to Use
+
 Browse Products: The homepage (/) displays all available products. Click "Add to Cart" to add an item.
 View Cart: Click on the "Cart" link in the navigation bar or navigate to /cart. Here you can adjust quantities or remove items.
 Checkout: From the cart page, click "Proceed to Checkout" or navigate to /checkout. Review your order and click "Place Order (Pay with Wallet)".
@@ -111,17 +139,22 @@ The backend server provides the following API endpoints, accessible by default a
 Products:
 GET /api/products: Fetches all available products.
 GET /api/products/:id: Fetches a single product by its ID.
+
 Cart:
 GET /api/cart: Retrieves the current state of the shopping cart.
 POST /api/cart/add: Adds a specified product and quantity to the cart.
+
 Request Body: { "productId": "string", "quantity": number }
 POST /api/cart/remove/:productId: Removes a product entirely from the cart.
 POST /api/cart/update: Updates the quantity of an existing item in the cart.
 Request Body: { "productId": "string", "quantity": number } (If quantity is 0 or less, the item is removed).
+
 Wallet:
 GET /api/wallet: Retrieves the current balance of the user's wallet.
+
 Checkout:
 POST /api/checkout: Processes the order. If the wallet balance is sufficient, it deducts the total order amount from the wallet and clears the cart.
+
 Development Choices & Reasoning
 React.js (Frontend): Chosen for its component-based architecture, efficient rendering with the Virtual DOM, and a vast ecosystem, facilitating rapid UI development.
 Node.js with Express.js (Backend): Selected for its fast development cycle (JavaScript full-stack), non-blocking I/O for handling concurrent requests efficiently, and the extensive NPM library.
