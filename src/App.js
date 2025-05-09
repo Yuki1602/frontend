@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+// frontend/src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ShopContextProvider } from './contexts/ShopContext';
+import Navbar from './components/Navbar';
+import ProductList from './components/ProductList';
+import Cart from './components/Cart';
+import Checkout from './components/Checkout';
+import Wallet from './components/Wallet';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ShopContextProvider>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<ProductList />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/wallet" element={<Wallet />} />
+              {/* You could add a 404 Not Found page here */}
+            </Routes>
+          </div>
+        </div>
+      </Router>
+    </ShopContextProvider>
   );
 }
 
